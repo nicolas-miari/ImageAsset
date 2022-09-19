@@ -13,7 +13,7 @@ public class ImageAsset: BinaryResourceAsset, Codable {
   /// Uniquely identifies the binary resource (image data) that the asset represents.
   public let binaryResourceIdentifier: String
 
-  init(name: String, resourceIdentifier: String, identifierProvider: any UniqueIdentifierProvider) throws {
+  public init(name: String, resourceIdentifier: String, identifierProvider: any UniqueIdentifierProvider) throws {
     self.name = name
     self.identifier = try identifierProvider.newIdentifier()
     self.binaryResourceIdentifier = resourceIdentifier
