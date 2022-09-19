@@ -4,25 +4,33 @@
 import PackageDescription
 
 let package = Package(
-    name: "ImageAsset",
-    products: [
-        // Products define the executables and libraries a package produces, and make them visible to other packages.
-        .library(
-            name: "ImageAsset",
-            targets: ["ImageAsset"]),
-    ],
-    dependencies: [
-        // Dependencies declare other packages that this package depends on.
-        // .package(url: /* package url */, from: "1.0.0"),
-    ],
-    targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages this package depends on.
-        .target(
-            name: "ImageAsset",
-            dependencies: []),
-        .testTarget(
-            name: "ImageAssetTests",
-            dependencies: ["ImageAsset"]),
-    ]
+  name: "ImageAsset",
+  platforms: [
+    .iOS(.v15),
+    .macOS(.v11)
+  ],
+  products: [
+    // Products define the executables and libraries a package produces, and make them visible to other packages.
+    .library(
+      name: "ImageAsset",
+      targets: ["ImageAsset"]),
+  ],
+  dependencies: [
+    // Dependencies declare other packages that this package depends on.
+    .package(url: "https://github.com/nicolas-miari/Asset.git", from: "1.0.0"),
+    .package(url: "https://github.com/nicolas-miari/UniqueIdentifierProvider.git", from: "0.0.1"),
+  ],
+  targets: [
+    // Targets are the basic building blocks of a package. A target can define a module or a test suite.
+    // Targets can depend on other targets in this package, and on products in packages this package depends on.
+    .target(
+      name: "ImageAsset",
+      dependencies: [
+        .product(name: "Asset", package: "Asset"),
+        .product(name: "UniqueIdentifierProvider", package: "UniqueIdentifierProvider"),
+      ]),
+    .testTarget(
+      name: "ImageAssetTests",
+      dependencies: ["ImageAsset"]),
+  ]
 )
