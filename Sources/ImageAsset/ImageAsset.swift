@@ -2,7 +2,7 @@ import Asset
 import Foundation
 import UniqueIdentifierProvider
 
-public class ImageAsset: BasicAsset, Codable {
+public class ImageAsset: BinaryResourceAsset, Codable {
 
   /// User-facing name of the asset in the editor.
   public var name: String
